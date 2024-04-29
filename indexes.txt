@@ -1,0 +1,8 @@
+Indexes were created on the following fields:
+
+In the Post relation, an index was created on 'user_id'.
+In the Comment relation, an index was created on 'post_id'.
+
+These indexes support my backend code in a variety of ways. For instance, having an index on comment.post_id allows for the get_comments function to run faster as this function is a query on the Comment table and filters by post_id. In addition, having indexes on comment.post_id and post.user_id help speed up the user_report and post_report functions. This speeding up occurs because both of these functions incorporate prepared statements that either joins tables on these field or utilizes the GROUP BY keyword. As such, the indexes I have included support the queries in my code.
+
+The aforementioned functions can all be found in the app.py file.

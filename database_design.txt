@@ -1,0 +1,14 @@
+Database Design
+----------------
+
+User(id, username, email)
+    Primary key: id
+
+Post(id, title, content, user_id, upvotes)
+    Primary key: id
+    Foreign key: user_id is a foreign key to User.id
+
+Comment(id, content, user_id, post_id)
+    Primary key: id
+    Foreign key: user_id is a foreign key to User.id
+                 post_id is a foreign key to Post.id
