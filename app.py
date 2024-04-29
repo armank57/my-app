@@ -4,7 +4,7 @@ from flask_cors import CORS
 from sqlalchemy import func, text
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://my-app-348final.onrender.com"]}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db' # Use a temporary database
 db = SQLAlchemy(app)
 
@@ -129,7 +129,7 @@ def delete_post(post_id):
         post = Post.query.get_or_404(post_id)
 
         Comment.query.filter_by(post_id=post_id).delete()
-        
+
         db.session.delete(post)
         db.session.commit()
     return jsonify({'message': 'Post has been deleted'})
